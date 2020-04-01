@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.question {
+  width: 100%;
+}
+
+.answers {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  * {
+    flex: 0 1 calc(50% - 10px);
+    
+  }
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Shopping assistant application</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/images/favicon.png">
+    <meta property="og:image" content="./assets/images/preview.png" />
+		
+	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+		<link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks[chunk].css %>">
+	<% } %>
+
+	</head>
+
+	<body>
+		<div class='application' id='application'></div>
+	</body>
+	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+		<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+	<% } %>
+</html>
