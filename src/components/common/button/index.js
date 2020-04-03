@@ -1,7 +1,13 @@
 import React from 'react'
+import classNames from 'classnames'
 import styles from './styles.module'
 
-const Button = ({ children }) => <button className={styles.container}>
+const Button = ({ children, inverted, size = 'default' }) => <button
+  className={classNames(styles.container, {
+    [styles.small]: size === 'small',
+    [styles.inverted]: inverted,
+  })}
+>
   {children}
 </button>
 export default Button

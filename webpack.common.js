@@ -53,14 +53,6 @@ module.exports = {
   },
   module: {
     rules: [{
-      enforce: 'pre',
-      test: /\.(js|jsx)$/,
-      loader: 'standard-loader',
-      exclude: /(node_modules)/,
-      options: {
-        parser: 'babel-eslint'
-      }
-    }, {
       test: /\.(js|jsx)$/,
       exclude: /node_modules/,
       use: {
@@ -85,7 +77,14 @@ module.exports = {
       ]
     }, {
       test: /\.(png|woff|woff2|eot|ttf|svg|otf|gif)$/,
-      loader: 'url-loader?limit=100000'
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: './vendor/[name].[ext]',
+          esModule: false
+        }
+      }]
+      
     }]
   },
   node: {

@@ -1,3 +1,3 @@
 export default {
-  copyright: 'footer'
+  copyright: 'BUYME, {{currentYear}}'
 }

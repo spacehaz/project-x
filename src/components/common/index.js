@@ -5,6 +5,7 @@ import Preloader from './preloader'
 import Button from './button'
 import Question from './question'
 import Answer from './answer'
+import Icons from './icons'
 
 export {
 	Header,
@@ -13,5 +14,6 @@ export {
   Preloader,
   Button,
   Question,
-  Answer
+  Answer,
+  Icons
 }
