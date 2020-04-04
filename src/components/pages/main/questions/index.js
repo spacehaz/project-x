@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles.module'
-import { Question, Answer } from 'components/common'
+import { Question, Answer, Ranking, GoodsCard } from 'components/common'
 import text from 'texts'
 import { Quiz } from 'components/containers'
 

@@ -4,6 +4,7 @@ import styles from './styles.module.scss'
 import Header from './header'
 import SearchBox from './search-box'
 import Questions from './questions'
+import Goods from './goods'
 
 @actions(({ user: { loading } }) => ({ loading }))
 @platform()
@@ -16,6 +17,7 @@ class Main extends React.Component {
       <Header title={this.t('titles.main')} description={this.t('texts.main')} />
       <SearchBox />
       <Questions />
+      <Goods />
     </div>
   }
 }

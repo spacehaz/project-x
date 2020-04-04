@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  > * {
+    margin-right: 10px;
+
+    &:last-item {
+      margin-right: 0px;
+    }
+  }
+}
