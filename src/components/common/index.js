@@ -6,6 +6,8 @@ import Button from './button'
 import Question from './question'
 import Answer from './answer'
 import Icons from './icons'
+import Ranking from './ranking'
+import GoodsCard from './goods-card'
 
 export {
 	Header,
@@ -15,5 +17,7 @@ export {
   Button,
   Question,
   Answer,
-  Icons
+  Icons,
+  Ranking,
+  GoodsCard
 }
