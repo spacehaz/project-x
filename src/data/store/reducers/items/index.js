@@ -3,7 +3,11 @@ import reducers from './reducers'
 const initialState = {
   items: [],
   loading: false,
-  error: null
+  error: null,
+  filters: {
+    location: null,
+    price: null
+  }
 }
 
 export default (state = initialState, action = {}) => {

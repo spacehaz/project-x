@@ -35,11 +35,6 @@ export default withRouter(
 // const QUESTIONS = [
 //   {
 //     question: 'Why do you want to buy it?',
-//     type: 'basic',
-//     id: 1,
-//     answers: [
-//       { text: 'As a present', id: 1 },
-//       { text: 'For myself', id: 2 }
-//     ]
+//     type: 'basic'
 //   }
 // ]
