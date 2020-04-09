@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module'
-import { Input, Preloader, Button, Icons } from 'components/common'
+import { SearchInput } from 'components/pages/common'
 import text from 'texts'
+import { debounce } from 'throttle-debounce'
 
-const Searchbox = () => <div className={styles.container}>
-  <Input icon={<Icons.MagnifyingGlass />} className={styles.input} placeholder={text('pages.main.titles.findPlaceholder')} />
-  <Button>{text('common.buttons.search')}</Button>
-</div>
+const Searchbox = ({ onSearch, question, loading, emptyResults }) => {
+  const search = debounce(300, ({ value }) => {
+    if (!value) { return emptyResults && emptyResults() }
+    onSearch && onSearch({ keywords: value })
+  })
+  return <div className={styles.container}>
+    <SearchInput
+      onChange={search}
+      loading={loading}
+      question={question}
+    />
+  </div>
+}
 
 export default Searchbox

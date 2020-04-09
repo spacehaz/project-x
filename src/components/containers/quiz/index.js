@@ -25,8 +25,8 @@ const mapStateToProps = ({
   loading
 })
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  getInitialQuestion: () => dispatch({ type: '*QUESTIONS.GET_QUESTION' }),
-  onAnswer: ({ questionId, answerIds }) => dispatch({ type: '*QUESTIONS.ANSWER', payload: { questionId, answerIds } })
+  getInitialQuestion: () => dispatch({ type: '*QUIZ.GET_QUESTION' }),
+  onAnswer: ({ questionId, answerIds }) => dispatch({ type: '*QUIZ.ANSWER', payload: { questionId, answerIds } })
 })
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(Quiz)
