@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --watch --config webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
+    "build": "cross-env NODE_ENV=production API_HOST=https://api.buymebuyme.xyz webpack --config webpack.prod.js",
     "dev:server": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --config webpack.dev.js"
   },
   "dependencies": {
