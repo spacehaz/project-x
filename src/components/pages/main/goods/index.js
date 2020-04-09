@@ -1,24 +1,31 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { GoodsCard } from 'components/common'
+import { GoodsCard, Preloader } from 'components/common'
+import text from 'texts'
 
-export default () => <div className={styles.container}>
-  <GoodsCard
-    ranking={3.4}
-    image='https://i.ebayimg.com/images/g/VBsAAOSw8G1d6OVI/s-l1600.jpg'
-    price='99.95$'
-    title='Sex-Product-Vibrator 10 Speed-Adult-Anal for Woman-G-Spot-Stimulate-Massage-Toy'
-  />
-  <GoodsCard
-    ranking={3.4}
-    image='https://i.ebayimg.com/images/g/VBsAAOSw8G1d6OVI/s-l1600.jpg'
-    price='99.95$'
-    title='Sex-Product-Vibrator 10 Speed-Adult-Anal for Woman-G-Spot-Stimulate-Massage-Toy'
-  />
-  <GoodsCard
-    ranking={3.4}
-    image='https://i.ebayimg.com/images/g/VBsAAOSw8G1d6OVI/s-l1600.jpg'
-    price='99.95$'
-    title='Sex-Product-Vibrator 10 Speed-Adult-Anal for Woman-G-Spot-Stimulate-Massage-Toy'
-  />
-</div>
+export default ({ items, loading }) => {
+  const statistics = <div className={styles.statistics}>
+    {text('pages.main.titles.totalResults', { count: items.length })}
+  </div>
+  if (loading) {
+    return <div className={styles.container}>
+      {statistics}
+      <div className={styles.content}>
+        <Preloader />
+      </div>
+    </div>
+  }
+  return <div className={styles.container}>
+    {statistics}
+    <div className={styles.content}>
+      {items.map(({ image, id, sellingStatus, title, url, price, sellerRanking }) => <GoodsCard
+        ranking={sellerRanking / 20}
+        image={image}
+        key={id}
+        price={`${parseFloat(price.__value__)}$`}
+        title={title}
+        url={url}
+      />)}
+    </div>
+  </div>
+}

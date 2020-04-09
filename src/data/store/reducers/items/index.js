@@ -1,9 +1,13 @@
 import reducers from './reducers'
 
 const initialState = {
-  questionIndex: 1,
-  question: null,
-  loading: false
+  items: [],
+  loading: false,
+  error: null,
+  filters: {
+    location: null,
+    price: null
+  }
 }
 
 export default (state = initialState, action = {}) => {
@@ -16,7 +20,7 @@ export default (state = initialState, action = {}) => {
 }
 
 const ACTIONS = {
-  'QUIZ.SET_QUESTION_INDEX': reducers.setQuestionIndex,
-  'QUIZ.SET_QUESTION': reducers.setQuestion,
-  'QUIZ.SET_LOADING': reducers.setLoading
+  'ITEMS.SET_ITEMS': reducers.setItems,
+  'ITEMS.SET_LOADING': reducers.setLoading,
+  'ITEMS.SET_ERROR': reducers.setError
 }

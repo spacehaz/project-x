@@ -6,18 +6,40 @@ import SearchBox from './search-box'
 import Questions from './questions'
 import Goods from './goods'
 
-@actions(({ user: { loading } }) => ({ loading }))
+@actions(({
+  items: {
+    items,
+    loading
+  },
+  quiz: {
+    loading: quizLoading,
+    question
+  }
+}) => ({
+  items,
+  loading,
+  question,
+  quizLoading
+}))
 @platform()
 @detectBrowser()
 @translate('pages.main')
 class Main extends React.Component {
-
   render () {
+    const { items, loading, quizLoading, question } = this.props
     return <div className={styles.container}>
       <Header title={this.t('titles.main')} description={this.t('texts.main')} />
-      <SearchBox />
-      <Questions />
-      <Goods />
+      <SearchBox
+        loading={quizLoading}
+        question={question}
+        onSearch={({ keywords }) => {
+          this.actions().items.getItems({ keywords })
+        }}
+        emptyResults={_ => {
+          this.actions().items.emptyResults()
+        }}
+      />
+      <Goods items={items} loading={loading} />
     </div>
   }
 }
