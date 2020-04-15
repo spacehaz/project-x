@@ -1,15 +1,18 @@
 import { put, call } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
+import { getQuestion } from 'data/api/quiz'
+import { formatAnswers } from 'helpers'
 
 const generator = function * ({ payload }) {
   try {
-    const { resultsLength } = payload
+    const { resultsLength, answers } = payload
     yield put({ type: 'QUIZ.SET_LOADING', payload: { loading: true } })
-    yield delay(1000)
-    if (resultsLength === 0) {
-      yield put({ type: 'QUIZ.SET_QUESTION', payload: { question: 'No results:( Try another request' } })
+    if (resultsLength != null && resultsLength === 0) {
+      yield put({ type: 'QUIZ.SET_QUESTION', payload: { question: { title: 'No results:( Try another request', no_options: true } } })
     } else {
-      yield put({ type: 'QUIZ.SET_QUESTION', payload: { question: 'What kind?' } })
+      const answersFormatted = formatAnswers({ answers })
+      const { question = {}, success } = yield call(getQuestion, { answers: answersFormatted })
+      yield put({ type: 'QUIZ.SET_QUESTION', payload: { question } })
     }
     
     yield put({ type: 'QUIZ.SET_LOADING', payload: { loading: false } })

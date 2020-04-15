@@ -7,6 +7,9 @@ import Questions from './questions'
 import Goods from './goods'
 
 @actions(({
+  filters: {
+    filters
+  },
   items: {
     items,
     loading
@@ -19,23 +22,29 @@ import Goods from './goods'
   items,
   loading,
   question,
+  filters,
   quizLoading
 }))
 @platform()
 @detectBrowser()
 @translate('pages.main')
 class Main extends React.Component {
+  componentDidMount () {
+    this.actions().quiz.getQuestion({})
+  }
+
   render () {
-    const { items, loading, quizLoading, question } = this.props
+    const { items, loading, quizLoading, question, filters } = this.props
     return <div className={styles.container}>
       <Header title={this.t('titles.main')} description={this.t('texts.main')} />
       <SearchBox
         loading={quizLoading}
         question={question}
-        onSearch={({ keywords }) => {
-          this.actions().items.getItems({ keywords })
+        onSearch={({ answer_id, question_id, value }) => {
+          this.actions().quiz.answer({ answer_id, question_id, value })
         }}
         emptyResults={_ => {
+          return
           this.actions().items.emptyResults()
         }}
       />

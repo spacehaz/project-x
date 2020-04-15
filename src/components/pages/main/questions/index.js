@@ -31,15 +31,3 @@ const Questions = ({ onAnswer, getQuestion, questionIndex, question }) => {
 }
 
 export default Questions
-
-const QUESTIONS = [
-  {
-    text: 'Why do you want to buy it?',
-    type: 'basic',
-    id: 1,
-    answers: [
-      { text: 'As a present', id: 1 },
-      { text: 'For myself', id: 2 }
-    ]
-  }
-]

@@ -8,6 +8,7 @@ const Quiz = ({ getInitialQuestion, onAnswer, questionIndex, question, QuestionC
   useEffect(() => {
     getInitialQuestion()
   }, [])
+  console.log({ question })
   return <div className={styles.container}>
     <QuestionComponent onAnswer={({ questionId, answerIds }) => onAnswer({ questionId, answerIds })} questionIndex={questionIndex} question={question} />
   </div>
