@@ -47,11 +47,11 @@ export default ({ loading, question, onChange }) => {
         {(question || {}).title}
       </span>
     </div>
-    {renderOptions({ question, changeValue, inputRef, changeId })}
+    {renderOptions({ question, changeValue, inputRef, changeId, value })}
   </div>
 }
 
-const renderOptions = ({ question, changeValue, inputRef, changeId }) => {
+const renderOptions = ({ question, changeValue, inputRef, changeId, value }) => {
   if (!question) { return null }
   if (question.no_options) { return null }
   return <div className={styles.answers}>
@@ -60,7 +60,7 @@ const renderOptions = ({ question, changeValue, inputRef, changeId }) => {
       onClick={_ => {
         console.log('here')
         changeId && changeId(answer.id)
-        changeValue && changeValue(answer.input_title)
+        changeValue && changeValue(`${value} ${answer.input_title}`)
       }}
     >
       {answer.title}
