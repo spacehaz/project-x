@@ -60,7 +60,8 @@ const renderOptions = ({ question, changeValue, inputRef, changeId, value }) => 
       onClick={_ => {
         console.log('here')
         changeId && changeId(answer.id)
-        changeValue && changeValue(`${value} ${answer.input_title}`)
+        const newValue = value === '' ? answer.input_title : `${value} ${answer.input_title}`
+        changeValue && changeValue(newValue)
       }}
     >
       {answer.title}
