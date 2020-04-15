@@ -2,6 +2,6 @@
 import fetch from '../fetch'
 import { prepareGetParams } from '../helpers'
 
-export default ({ keywords }) => {
-  return fetch(`${API_URL}/items${prepareGetParams({ keywords, limit: 100 })}`)
+export default ({ answers }) => {
+  return fetch(`${API_URL}/items${prepareGetParams({ answers, limit: 100 })}`)
 }
