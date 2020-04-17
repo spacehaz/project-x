@@ -8,6 +8,7 @@ import Answer from './answer'
 import Icons from './icons'
 import Ranking from './ranking'
 import GoodsCard from './goods-card'
+import Keyword from './keyword'
 
 export {
 	Header,
@@ -19,5 +20,6 @@ export {
   Answer,
   Icons,
   Ranking,
-  GoodsCard
+  GoodsCard,
+  Keyword
 }

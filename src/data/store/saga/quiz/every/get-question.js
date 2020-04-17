@@ -5,15 +5,16 @@ import { formatAnswers } from 'helpers'
 
 const generator = function * ({ payload }) {
   try {
-    const { resultsLength, answers } = payload
+    const { resultsLength, answers, keywords } = payload
     yield put({ type: 'QUIZ.SET_LOADING', payload: { loading: true } })
-    if (resultsLength != null && resultsLength === 0) {
-      yield put({ type: 'QUIZ.SET_QUESTION', payload: { question: { title: 'No results:( Try another request', no_options: true } } })
-    } else {
-      const answersFormatted = formatAnswers({ answers })
-      const { question = {}, success } = yield call(getQuestion, { answers: answersFormatted })
-      yield put({ type: 'QUIZ.SET_QUESTION', payload: { question } })
-    }
+    // if (resultsLength != null && resultsLength === 0) {
+    //   yield put({ type: 'QUIZ.SET_QUESTION', payload: { question: { title: 'No results:( Try another request', no_options: true } } })
+    // } else {
+    const answersFormatted = formatAnswers({ answers })
+    const { question = {}, success } = yield call(getQuestion, { answers: answersFormatted })
+    yield put({ type: 'QUIZ.SET_QUESTION', payload: { question } })
+    yield put({ type: 'QUIZ.SET_KEYWORDS', payload: { keywords } })
+    // }
     
     yield put({ type: 'QUIZ.SET_LOADING', payload: { loading: false } })
   } catch (e) {

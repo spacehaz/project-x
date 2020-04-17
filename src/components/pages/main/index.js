@@ -7,23 +7,23 @@ import Questions from './questions'
 import Goods from './goods'
 
 @actions(({
-  filters: {
-    filters
-  },
   items: {
     items,
-    loading
+    loading,
+    maxPrice
   },
   quiz: {
     loading: quizLoading,
-    question
+    question,
+    keywords
   }
 }) => ({
   items,
   loading,
+  maxPrice,
   question,
-  filters,
-  quizLoading
+  quizLoading,
+  keywords
 }))
 @platform()
 @detectBrowser()
@@ -34,12 +34,14 @@ class Main extends React.Component {
   }
 
   render () {
-    const { items, loading, quizLoading, question, filters } = this.props
+    const { items, loading, keywords, maxPrice, quizLoading, question } = this.props
     return <div className={styles.container}>
       <Header title={this.t('titles.main')} description={this.t('texts.main')} />
       <SearchBox
+        items={items}
         loading={quizLoading}
         question={question}
+        maxPrice={maxPrice}
         onSearch={({ answer_id, question_id, value }) => {
           this.actions().quiz.answer({ answer_id, question_id, value })
         }}

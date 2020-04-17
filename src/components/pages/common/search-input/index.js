@@ -10,17 +10,19 @@ export default ({ loading, question, onChange }) => {
   const [value, changeValue] = useState('')
   const [id, changeId] = useState(null)
   const [width, changeWidth] = useState(8)
+  const [focused, changeFocus] = useState(false)
   useEffect(_ => {
     const spanWidth = spanRef.current.offsetWidth
     changeWidth(spanWidth)
   }, [value])
   useEffect(_ => {
-
     if (!question) { return }
     if (!id) { return }
-    console.log({ value: value, answer_id: id, question_id: question.id })
     onChange({ value: value, answer_id: id, question_id: question.id })
   }, [id])
+  useEffect(_ => {
+    inputRef.current.focus()
+  }, [(question || {}).title])
   return <div>
     <div className={styles.inputContainer} onClick={_ => inputRef.current.focus()}>
       <Icons.MagnifyingGlass />
@@ -40,6 +42,9 @@ export default ({ loading, question, onChange }) => {
         onChange={e => {
           changeValue(e.target.value)
         }}
+        onFocus={e => {
+          changeFocus(true)
+        }}
       />
       <span className={classNames(styles.question, {
         [styles.questionLoading]: loading
@@ -47,24 +52,36 @@ export default ({ loading, question, onChange }) => {
         {(question || {}).title}
       </span>
     </div>
-    {renderOptions({ question, changeValue, inputRef, changeId, value })}
+    {renderOptions({ focused, question, changeValue, inputRef, changeId, value })}
   </div>
 }
 
-const renderOptions = ({ question, changeValue, inputRef, changeId, value }) => {
+const renderOptions = ({ question, changeValue, inputRef, changeId, value, focused }) => {
+  if (!focused) { return null }
   if (!question) { return null }
   if (question.no_options) { return null }
+
   return <div className={styles.answers}>
-    {question.answers.map(answer => <div
-      className={styles.answer}
-      onClick={_ => {
-        console.log('here')
-        changeId && changeId(answer.id)
-        const newValue = value === '' ? answer.input_title : `${value} ${answer.input_title}`
-        changeValue && changeValue(newValue)
-      }}
-    >
-      {answer.title}
-    </div>)}
+    {question.answers.map(answer => {
+      console.log({ answer })
+      return <div
+        className={classNames(styles.answer, {
+          [styles.answerSimilar]: value.toLowerCase() !== '' && (answer.title).toLowerCase().indexOf(value.toLowerCase()) > -1,
+          [styles.disabled]: answer.disabled
+        })}
+        onMouseDown={e => {
+          if (answer.disabled) { return }
+          // const newValue = value === '' ? answer.input_title : `${value} ${answer.input_title}`
+          const newValue = answer.input_title
+          if (answer.stop) {
+            return inputRef.current.focus()
+          }
+          changeId && changeId(answer.id)
+          changeValue && changeValue(newValue || '')
+        }}
+      >
+        {answer.title}
+      </div>
+    })}
   </div>
 }
