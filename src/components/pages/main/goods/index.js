@@ -4,19 +4,15 @@ import { GoodsCard, Preloader } from 'components/common'
 import text from 'texts'
 
 export default ({ items, loading }) => {
-  const statistics = <div className={styles.statistics}>
-    {text('pages.main.titles.totalResults', { count: items.length })}
-  </div>
+  
   if (loading) {
     return <div className={styles.container}>
-      {statistics}
       <div className={styles.content}>
         <Preloader />
       </div>
     </div>
   }
   return <div className={styles.container}>
-    {statistics}
     <div className={styles.content}>
       {items.map(({ image, id, sellingStatus, title, url, price, sellerRanking }) => <GoodsCard
         ranking={sellerRanking / 20}

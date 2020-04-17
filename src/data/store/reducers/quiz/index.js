@@ -4,7 +4,8 @@ const initialState = {
   questionIndex: 1,
   question: null,
   loading: false,
-  answers: []
+  answers: [],
+  keywords: ''
 }
 
 export default (state = initialState, action = {}) => {
@@ -20,5 +21,6 @@ const ACTIONS = {
   'QUIZ.SET_QUESTION_INDEX': reducers.setQuestionIndex,
   'QUIZ.SET_QUESTION': reducers.setQuestion,
   'QUIZ.SET_LOADING': reducers.setLoading,
-  'QUIZ.SET_ANSWERS': reducers.setAnswers
+  'QUIZ.SET_ANSWERS': reducers.setAnswers,
+  'QUIZ.SET_KEYWORDS': reducers.setKeywords
 }

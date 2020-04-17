@@ -3,7 +3,8 @@ import reducers from './reducers'
 const initialState = {
   items: [],
   loading: false,
-  error: null
+  error: null,
+  maxPrice: 0
 }
 
 export default (state = initialState, action = {}) => {
@@ -18,5 +19,6 @@ export default (state = initialState, action = {}) => {
 const ACTIONS = {
   'ITEMS.SET_ITEMS': reducers.setItems,
   'ITEMS.SET_LOADING': reducers.setLoading,
-  'ITEMS.SET_ERROR': reducers.setError
+  'ITEMS.SET_ERROR': reducers.setError,
+  'ITEMS.SET_MAX_PRICE': reducers.setMaxPrice
 }
