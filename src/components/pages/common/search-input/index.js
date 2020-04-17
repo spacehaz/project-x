@@ -4,7 +4,7 @@ import { Preloader } from 'components/common'
 import classNames from 'classnames'
 import { Icons } from 'components/common'
 
-export default ({ loading, question, onChange }) => {
+export default ({ loading, question, onChange, keywords }) => {
   const inputRef = React.createRef()
   const spanRef = React.createRef()
   const [value, changeValue] = useState('')
