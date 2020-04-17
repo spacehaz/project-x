@@ -23,6 +23,7 @@ const Searchbox = ({ maxPrice, onSearch, question, loading, emptyResults, items,
     </div>
     <SearchInput
       onChange={search}
+      keywords={keywords}
       loading={loading}
       question={question}
     />

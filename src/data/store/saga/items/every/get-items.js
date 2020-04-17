@@ -16,7 +16,7 @@ const generator = function * ({ payload }) {
         sum = sum.concat(parseFloat(item.price.__value__))
         return sum
       }, []))
-      yield put({ type: 'ITEMS.SET_MAX_PRICE', payload: { maxPrice } })
+      yield put({ type: 'ITEMS.SET_MAX_PRICE', payload: { maxPrice: `${maxPrice}$` } })
       yield put({ type: 'ITEMS.SET_ITEMS', payload: { items: formattedData } })
       yield put({ type: '*QUIZ.GET_QUESTION', payload: { resultsLength: formattedData.length, answers, keywords } })
     } else {

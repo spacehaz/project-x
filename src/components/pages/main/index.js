@@ -41,6 +41,7 @@ class Main extends React.Component {
         items={items}
         loading={quizLoading}
         question={question}
+        keywords={keywords}
         maxPrice={maxPrice}
         onSearch={({ answer_id, question_id, value }) => {
           this.actions().quiz.answer({ answer_id, question_id, value })
