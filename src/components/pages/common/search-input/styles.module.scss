@@ -56,6 +56,7 @@
   outline: none;
   overflow: none;
   border: none;
+  min-width: 8px;
 }
 
 .inputSizer {
@@ -70,7 +71,7 @@
 
 .question {
   padding-left: 10px;
-  color: $primaryUi;
+  color: #f3126b;
   &.questionLoading {
     opacity: .7
   }
