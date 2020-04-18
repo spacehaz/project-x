@@ -13,7 +13,6 @@ const Searchbox = ({ maxPrice, onSearch, question, loading, emptyResults, items,
     {text('pages.main.titles.maxPrice', { maxPrice })}
   </div>
   const search = debounce(1000, ({ value, answer_id, question_id }) => {
-    if (!answer_id) { return emptyResults && emptyResults() }
     onSearch && onSearch({ value, answer_id, question_id })
   })
   return <div className={styles.container}>
