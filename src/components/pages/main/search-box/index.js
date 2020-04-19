@@ -25,6 +25,7 @@ const Searchbox = ({ maxPrice, onSearch, question, loading, emptyResults, items,
       keywords={keywords}
       loading={loading}
       question={question}
+      maxPrice={maxPrice}
     />
   </div>
 }

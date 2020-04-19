@@ -4,7 +4,7 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
-  maxPrice: '0$'
+  maxPrice: 0
 }
 
 export default (state = initialState, action = {}) => {
