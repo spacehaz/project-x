@@ -18,7 +18,7 @@ export default ({ items, loading }) => {
         ranking={sellerRanking / 20}
         image={image}
         key={id}
-        price={`${parseFloat(price.__value__)}$`}
+        price={`${parseFloat(price.value)}$`}
         title={title}
         url={url}
       />)}
