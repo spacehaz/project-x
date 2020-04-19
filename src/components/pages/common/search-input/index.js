@@ -4,7 +4,7 @@ import { Preloader } from 'components/common'
 import classNames from 'classnames'
 import { Icons } from 'components/common'
 
-export default ({ loading, question, onChange, keywords }) => {
+export default ({ loading, maxPrice, question, onChange, keywords }) => {
   const inputRef = React.createRef()
   const spanRef = React.createRef()
   const valuesRef = React.createRef()
@@ -60,6 +60,7 @@ export default ({ loading, question, onChange, keywords }) => {
     </div>
     {renderOptions({
       focused,
+      maxPrice,
       question,
       changeValue,
       inputRef,
@@ -71,7 +72,7 @@ export default ({ loading, question, onChange, keywords }) => {
   </div>
 }
 
-const renderOptions = ({ question, changeValues, changeValue, inputRef, changeId, value, focused, values }) => {
+const renderOptions = ({ question, maxPrice, changeValues, changeValue, inputRef, changeId, value, focused, values }) => {
   if (!focused) { return null }
   if (!question) { return null }
   if (!question.answers) { return null }
@@ -95,8 +96,21 @@ const renderOptions = ({ question, changeValues, changeValue, inputRef, changeId
           changeValues && changeValues((`${values} ${newValue || ''}`).trim())
         }}
       >
-        {answer.title}
+        {renderAnswerTitle({ answer, maxPrice })}
       </div>
     })}
   </div>
+}
+
+const renderAnswerTitle = ({ answer, maxPrice }) => {
+  const { title, calculate, key } = answer
+  if (calculate && calculate === 'price') {
+    const [ min, max ] = key.split('__')
+    const pricePercent = maxPrice / 100
+    
+    const minPriceLimit = pricePercent * Number(min)
+    const maxPriceLimit = pricePercent * Number(max)
+    return `${Math.round(minPriceLimit)} - ${Math.round(maxPriceLimit)}`
+  }
+  return title
 }
