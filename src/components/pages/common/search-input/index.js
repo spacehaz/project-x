@@ -4,7 +4,7 @@ import { Preloader } from 'components/common'
 import classNames from 'classnames'
 import { Icons } from 'components/common'
 
-export default ({ loading, maxPrice, question, onChange, keywords }) => {
+export default ({ loading, maxPrice, question, onChange, onChangeById, keywords }) => {
   const inputRef = React.createRef()
   const spanRef = React.createRef()
   const valuesRef = React.createRef()
@@ -23,7 +23,7 @@ export default ({ loading, maxPrice, question, onChange, keywords }) => {
   useEffect(_ => {
     if (!question) { return }
     if (!id) { return }
-    onChange({ value: value, answer_id: id, question_id: question.id })
+    onChangeById({ value: value, answer_id: id, question_id: question.id })
   }, [id])
   useEffect(_ => {
     inputRef.current.focus()
@@ -62,6 +62,7 @@ export default ({ loading, maxPrice, question, onChange, keywords }) => {
       focused,
       maxPrice,
       question,
+      loading,
       changeValue,
       inputRef,
       changeId,
@@ -72,7 +73,7 @@ export default ({ loading, maxPrice, question, onChange, keywords }) => {
   </div>
 }
 
-const renderOptions = ({ question, maxPrice, changeValues, changeValue, inputRef, changeId, value, focused, values }) => {
+const renderOptions = ({ question, maxPrice, changeValues, changeValue, inputRef, changeId, value, focused, values, loading }) => {
   if (!focused) { return null }
   if (!question) { return null }
   if (!question.answers) { return null }
@@ -82,9 +83,10 @@ const renderOptions = ({ question, maxPrice, changeValues, changeValue, inputRef
       return <div
         className={classNames(styles.answer, {
           [styles.answerSimilar]: value.toLowerCase() !== '' && (answer.title).toLowerCase().indexOf(value.toLowerCase()) > -1,
-          [styles.disabled]: answer.disabled
+          [styles.disabled]: answer.disabled || loading
         })}
         onMouseDown={e => {
+          if (loading) { return }
           // const newValue = value === '' ? answer.input_title : `${value} ${answer.input_title}`
           const newValue = answer.input_title
           // if (answer.stop) {

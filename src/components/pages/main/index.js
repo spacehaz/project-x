@@ -39,7 +39,7 @@ class Main extends React.Component {
       <Header title={this.t('titles.main')} description={this.t('texts.main')} />
       <SearchBox
         items={items}
-        loading={quizLoading}
+        loading={quizLoading || loading}
         question={question}
         keywords={keywords}
         maxPrice={maxPrice}
