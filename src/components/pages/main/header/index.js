@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { getImages } from 'helpers'
 const images = getImages({ src: 'pattern' })
 
-export default ({ title, description }) => <div className={styles.header} style={{ backgroundImage: `url(${isHighDensity() || isRetina() ? images.imageRetina : imageRetina.image})` }}>
+export default ({ title, description }) => <div className={styles.header} style={{ backgroundImage: `url(${isHighDensity() || isRetina() ? images.imageRetina : images.image})` }}>
   <div className={styles.headerContent}>
     <h1 className={styles.title}>{title}</h1>
     <h4 className={styles.description}>{description}</h4>

@@ -14,10 +14,11 @@ export default ({ items, loading }) => {
   }
   return <div className={styles.container}>
     <div className={styles.content}>
-      {items.map(({ image, id, sellingStatus, title, url, price, sellerRanking }) => <GoodsCard
+      {items.map(({ image, id, buyingOptions = [], sellingStatus, title, url, price, sellerRanking }) => <GoodsCard
         ranking={sellerRanking / 20}
         image={image}
         key={id}
+        bestOffer={buyingOptions.indexOf('BEST_OFFER') > -1}
         price={`${parseFloat(price.value)}$`}
         title={title}
         url={url}

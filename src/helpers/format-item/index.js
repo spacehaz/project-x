@@ -8,7 +8,8 @@ export default ({
   itemWebUrl,
   itemLocation,
   seller = {},
-  price = {}
+  price = {},
+  buyingOptions
 }) => {
   return {
     id: itemId,
@@ -18,6 +19,7 @@ export default ({
     url: itemWebUrl,
     sellerRanking: seller.feedbackPercentage,
     location: itemLocation,
-    price
+    price,
+    buyingOptions
   }
 }

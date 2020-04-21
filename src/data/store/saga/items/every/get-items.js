@@ -17,9 +17,17 @@ const generator = function * ({ payload }) {
         sum = sum.concat(parseFloat(item.price.value))
         return sum
       }, [])) || 500
-      console.log({ maxPriceApi: maxPrice })
       yield put({ type: 'ITEMS.SET_MAX_PRICE', payload: { maxPrice } })
-      yield put({ type: 'ITEMS.SET_ITEMS', payload: { items: formattedData } })
+      yield put({ type: 'ITEMS.SET_ITEMS', payload: { items: formattedData.sort((a, b) => {
+        if (b.buyingOptions.indexOf('BEST_OFFER') > -1 && a.buyingOptions.indexOf('BEST_OFFER') > -1) {
+          return 0
+        }
+        if (b.buyingOptions.indexOf('BEST_OFFER') > -1 && a.buyingOptions.indexOf('BEST_OFFER') === -1) {
+          return 1
+        }
+        return -1
+        
+      }) } })
       if (!userKeywords) {
         yield put({ type: '*QUIZ.GET_QUESTION', payload: { resultsLength: formattedData.length, answers, keywords } })
       }

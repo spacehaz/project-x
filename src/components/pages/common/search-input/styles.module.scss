@@ -27,6 +27,11 @@
     background-color: #F1F3F4;
   }
 
+  &.disabled {
+    opacity: .3;
+    cursor: not-allowed;
+  }
+
   &.answerSimilar {
     background: #E5E7FA;
   }
