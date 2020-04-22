@@ -4,12 +4,12 @@ import { Preloader } from 'components/common'
 import classNames from 'classnames'
 import { Icons } from 'components/common'
 
-export default ({ loading, maxPrice, question, onChange, onChangeById, keywords }) => {
+export default ({ loading, maxPrice, question, onChange, onChangeById, keywords, onRevert }) => {
   const inputRef = React.createRef()
   const spanRef = React.createRef()
   const valuesRef = React.createRef()
   const [value, changeValue] = useState('')
-  const [values, changeValues] = useState('')
+  const [values, changeValues] = useState([])
   const [id, changeId] = useState(null)
   const [width, changeWidth] = useState(8)
   const [focused, changeFocus] = useState(false)
@@ -31,7 +31,7 @@ export default ({ loading, maxPrice, question, onChange, onChangeById, keywords 
   return <div>
     <div className={styles.inputContainer} onClick={_ => inputRef.current.focus()}>
       <Icons.MagnifyingGlass />
-      <span ref={valuesRef} className={styles.values}>{values}</span>
+      <span ref={valuesRef} className={styles.values}>{values.filter(item => item.value).map(item => item.value).join(' ')}</span>
       <span
         ref={spanRef}
         className={styles.inputSizer}
@@ -57,6 +57,19 @@ export default ({ loading, maxPrice, question, onChange, onChangeById, keywords 
       })}>
         {(question || {}).title}
       </span>
+    </div>
+    <div className={classNames(styles.revert, {
+      [styles.disabled]: values.length === 0
+    })} onClick={_ => {
+      if (values.length === 0) { return }
+      const questionToRevert = values[values.length - 1].question
+      if (questionToRevert < 1) { return }
+      const newValues = values.filter(value => Number(value.question) !== Number(questionToRevert))
+      changeValues(newValues)
+      changeId(null)
+      onRevert && onRevert({ question_id: questionToRevert })
+    }}>
+      Go to previous question
     </div>
     {renderOptions({
       focused,
@@ -95,7 +108,10 @@ const renderOptions = ({ question, maxPrice, changeValues, changeValue, inputRef
           // }
           changeId && changeId(answer.id)
           changeValue && changeValue('')
-          changeValues && changeValues((`${values} ${newValue || ''}`).trim())
+          changeValues && changeValues(values.concat({
+            value: newValue,
+            question: question.id
+          }))
         }}
       >
         {renderAnswerTitle({ answer, maxPrice })}

@@ -46,9 +46,8 @@ class Main extends React.Component {
         onSearch={({ answer_id, question_id, value }) => {
           this.actions().quiz.answer({ answer_id, question_id, value })
         }}
-        emptyResults={_ => {
-          return
-          this.actions().items.emptyResults()
+        onRevert={({ question_id }) => {
+          this.actions().quiz.revertAnswer({ question_id })
         }}
       />
       <Goods items={items} loading={loading} />
