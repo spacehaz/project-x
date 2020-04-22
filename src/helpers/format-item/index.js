@@ -7,7 +7,9 @@ export default ({
   image = {},
   itemWebUrl,
   itemLocation,
-  seller = {},
+  seller = {
+    feedbackPercentage: 0
+  },
   price = {},
   buyingOptions
 }) => {
