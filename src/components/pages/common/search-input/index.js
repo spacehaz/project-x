@@ -123,7 +123,8 @@ const renderOptions = ({ question, maxPrice, changeValues, changeValue, inputRef
 const renderAnswerTitle = ({ answer, maxPrice }) => {
   const { title, calculate, key } = answer
   if (calculate && calculate === 'price') {
-    const [ min, max ] = key.split('__')
+    const priceInterval = key.split(':')
+    const [ min, max ] = (priceInterval[1]).split('__')
     const pricePercent = maxPrice / 100
     
     const minPriceLimit = pricePercent * Number(min)
