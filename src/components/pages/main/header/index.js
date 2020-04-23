@@ -1,12 +1,16 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { getImages } from 'helpers'
-const images = getImages({ src: 'pattern' })
+import text from 'texts'
 
-export default ({ title, description }) => <div className={styles.header} style={{ backgroundImage: `url(${isHighDensity() || isRetina() ? images.imageRetina : images.image})` }}>
+export default () => <div className={styles.header}>
+  <div className={styles.logo}>COVID Sex Partner</div>
   <div className={styles.headerContent}>
-    <h1 className={styles.title}>{title}</h1>
-    <h4 className={styles.description}>{description}</h4>
+    <h1 className={styles.title}>{text('pages.main.titles.main')}</h1>
+    <div className={styles.author}>{text('pages.main.texts.text_1')}</div>
+    <div className={styles.description}>{text('pages.main.texts.text_2')}</div>
+    <div className={styles.description}>{text('pages.main.texts.text_3')}</div>
+    <div className={styles.description}>{text('pages.main.texts.text_4')}</div>
+    <div className={styles.description}>{text('pages.main.texts.text_5')}</div>
   </div>
 </div>
 

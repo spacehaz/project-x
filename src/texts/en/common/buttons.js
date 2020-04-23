@@ -1,4 +1,5 @@
 export default {
   ok: 'OK',
-  search: 'Search'
+  search: 'Search',
+  loadMore: 'Load More'
 }

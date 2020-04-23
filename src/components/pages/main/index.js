@@ -35,8 +35,9 @@ class Main extends React.Component {
 
   render () {
     const { items, loading, keywords, maxPrice, quizLoading, question } = this.props
+    console.log({ question })
     return <div className={styles.container}>
-      <Header title={this.t('titles.main')} description={this.t('texts.main')} />
+      <Header />
       <SearchBox
         items={items}
         loading={quizLoading || loading}
@@ -50,7 +51,7 @@ class Main extends React.Component {
           this.actions().quiz.revertAnswer({ question_id })
         }}
       />
-      <Goods items={items} loading={loading} />
+      <Goods items={items} loading={loading} question={question} />
     </div>
   }
 }

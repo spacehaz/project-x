@@ -2,32 +2,54 @@
 
 .header {
   border-bottom: 1px solid $secondaryBorder;
-  padding: 50px 10px;
-  display: flex;
+  padding: 50px 30px;
   background-size: contain;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
+  height: 500px;
+  background: url('assets/images/background-1.jpg');
+  background-size: cover; 
   justify-content: center;
+  background-position: 50% 50%;
 }
 
 .headerContent {
-  padding: 20px;
-  background: #FFF;
-  border-radius: 16px;
+  max-width: 500px;
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 30px;
+  font-family: 'Inter-Regular';
+  text-transform: uppercase;
+  margin-bottom: 40px;
 }
 
 .title {
-  font-size: $h1Size;
-  font-family: $h1FontFamily;
-  margin: 0 0 20px 0px;
-  text-align: center;
-  color: #f3126b;
+  font-size: 30px;
+  font-family: 'Inter-Bold';
+  margin: 0 0 26px 0px;
+  background: #FFF;
+  padding: 6px;
+  display: inline-block;
+}
+
+.author {
+  background: #FFF;
+  align-self: flex-end;
+  text-align: right;
+  padding: 6px;
+  margin-bottom: 10px;
+  display: inline-block;
+  font-family: 'Inter-Bold';
 }
 
 .description {
-  font-size: $h4Size;
-  font-family: $h4FontFamily;
-  margin: 0 0 0px 0px;
-  text-align: center;
-  max-width: 500px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  background: #FFF;
+  padding: 6px;
+  display: inline-block;
+  font-family: 'Inter-Medium';
 }

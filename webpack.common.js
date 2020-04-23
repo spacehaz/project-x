@@ -76,7 +76,7 @@ module.exports = {
         postCSSLoader
       ]
     }, {
-      test: /\.(png|woff|woff2|eot|ttf|svg|otf|gif)$/,
+      test: /\.(png|woff|woff2|eot|jpg|ttf|svg|otf|gif)$/,
       use: [{
         loader: 'file-loader',
         options: {

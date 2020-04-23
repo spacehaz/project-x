@@ -129,7 +129,7 @@ const renderAnswerTitle = ({ answer, maxPrice }) => {
     
     const minPriceLimit = pricePercent * Number(min)
     const maxPriceLimit = pricePercent * Number(max)
-    return `${Math.round(minPriceLimit)} - ${Math.round(maxPriceLimit)}`
+    return `${Math.round(minPriceLimit)}$ - ${Math.round(maxPriceLimit)}$`
   }
   return title
 }
