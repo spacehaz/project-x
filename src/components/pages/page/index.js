@@ -8,7 +8,7 @@ import text from 'texts'
 class Page extends React.Component {
   render () {
     return <div className={styles.container}>
-      <Header />
+      {false && <Header />}
       <div className={styles.main}>
         {this.props.children}
       </div>

@@ -26,6 +26,11 @@
     padding: 0px 24px;
   }
 
+  &.disabled {
+    cursor: not-allowed;
+    opacity: .3;
+  }
+
   &.inverted {
     color: $primaryUi;
     background: transparent;

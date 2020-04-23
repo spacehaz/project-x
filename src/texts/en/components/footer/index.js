@@ -1,3 +1,5 @@
 export default {
-  copyright: 'BUYME, {{currentYear}}'
+  copyright: 'Covid Sex Partner',
+  madeBy: 'Made by Grok - AI shopping assistant',
+  contact: 'Contact {{email}}' 
 }

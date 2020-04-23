@@ -1,6 +1,28 @@
 .container {
-	height: 40px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  background: #000;
+  color: #FFF;
+  text-transform: uppercase;
+  font-size: 18px;
+  padding: 50px 40px
+}
+
+.copyright {
+  text-align: center;
+}
+
+.contact {
+  margin-bottom: 30px;
+  display: inline-block;
+  padding: 6px;
+  background: #FFF;
+  color: #000;
+}
+
+.madeBy {
+  font-size: 22px;
+  display: inline-block;
+  padding: 6px;
+  background: #FFF;
+  color: #000;
+  margin-bottom: 20px;
 }

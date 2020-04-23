@@ -10,7 +10,7 @@ const Searchbox = ({ maxPrice, onSearch, question, loading, onRevert, items, key
   </div>
 
   const maxPriceContainer = <div className={styles.maxPrice}>
-    {text('pages.main.titles.maxPrice', { maxPrice })}
+    {text('pages.main.titles.maxPrice', { maxPrice: `${maxPrice}$` })}
   </div>
   const search = debounce(1000, ({ value, answer_id, question_id }) => {
     onSearch && onSearch({ value, answer_id, question_id })
