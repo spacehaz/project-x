@@ -5,6 +5,8 @@ import Header from './header'
 import SearchBox from './search-box'
 import Questions from './questions'
 import Goods from './goods'
+import Description from './description'
+import Steps from './steps'
 
 @actions(({
   items: {
@@ -35,9 +37,9 @@ class Main extends React.Component {
 
   render () {
     const { items, loading, keywords, maxPrice, quizLoading, question } = this.props
-    console.log({ question })
     return <div className={styles.container}>
       <Header />
+      <Steps />
       <SearchBox
         items={items}
         loading={quizLoading || loading}
@@ -52,6 +54,8 @@ class Main extends React.Component {
         }}
       />
       <Goods items={items} loading={loading} question={question} />
+
+      <Description />
     </div>
   }
 }
