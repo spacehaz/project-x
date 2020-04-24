@@ -1,0 +1,45 @@
+.container {
+  padding: 50px 30px;
+  position: relative;
+
+  > * {
+    position: relative;
+  }
+}
+
+.container:before {
+  position: absolute;
+  top: 0;
+  content:'';
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('assets/images/background-2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  transform: scaleX(-1);
+}
+
+.content {
+  max-width: 500px;
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 30px;
+  font-family: 'Inter-Regular';
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.text {
+  font-size: 20px;
+  margin-bottom: 14px;
+  background: #FFF;
+  padding: 6px;
+  display: inline-block;
+  font-family: 'Inter-Medium';
+}

@@ -1,14 +1,11 @@
 @import "variables";
 
 .header {
-  border-bottom: 1px solid $secondaryBorder;
   padding: 50px 30px;
   background-size: contain;
   position: relative;
-  height: 500px;
   background: url('assets/images/background-1.jpg');
   background-size: cover; 
-  justify-content: center;
   background-position: 50% 50%;
 }
 
