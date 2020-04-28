@@ -4,7 +4,7 @@ import { SearchInput } from 'components/pages/common'
 import text from 'texts'
 import { debounce } from 'throttle-debounce'
 
-const Searchbox = ({ maxPrice, onSearch, question, loading, onRevert, items, keywords }) => {
+const Searchbox = ({ maxPrice, error, onSearch, question, loading, onRevert, items, keywords }) => {
   const statistics = <div className={styles.statistics}>
     {text('pages.main.titles.totalResults', { count: items.length })}
   </div>
@@ -24,6 +24,7 @@ const Searchbox = ({ maxPrice, onSearch, question, loading, onRevert, items, key
     </div>
     <SearchInput
       onChange={search}
+      error={error}
       loading={loading}
       onChangeById={onSearch}
       keywords={keywords}

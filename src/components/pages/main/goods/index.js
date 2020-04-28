@@ -3,12 +3,13 @@ import styles from './styles.module.scss'
 import { GoodsCard, Preloader, Button } from 'components/common'
 import text from 'texts'
 
-export default ({ items, loading, question }) => {
+export default ({ items, loading, question, error }) => {
   const [ cardsCount, setCardsCount ] = useState(6)
   useEffect(_ => {
     setCardsCount(6)
-    console.log('new questions loaded')
   }, [(question || {}).id])
+
+
 
   const loadMore = <Button
     className={styles.button}
@@ -25,6 +26,11 @@ export default ({ items, loading, question }) => {
       <div className={styles.content}>
         <Preloader />
       </div>
+    </div>
+  }
+  if (error) {
+    return <div className={styles.error}>
+      {text(`pages.main.errors.${error}`)}
     </div>
   }
   return <div className={styles.container}>

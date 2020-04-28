@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import styles from './styles.module.scss'
 import { Preloader } from 'components/common'
 import classNames from 'classnames'
-import { Icons } from 'components/common'
+import { Icons, Button } from 'components/common'
 
-export default ({ loading, maxPrice, question, onChange, onChangeById, keywords, onRevert }) => {
+export default ({ loading, maxPrice, error, question, onChange, onChangeById, keywords, onRevert }) => {
   const inputRef = React.createRef()
   const spanRef = React.createRef()
   const valuesRef = React.createRef()
@@ -20,12 +20,22 @@ export default ({ loading, maxPrice, question, onChange, onChangeById, keywords,
       onChange({ value: value })
     }
   }, [value])
+
+  useEffect(_ => {
+    document.addEventListener('click', e => {
+      if(!e.target.closest(`.${styles.inputContainer}`)) {
+        console.log(changeFocus(false))
+        // inputRef.current.blur()
+      }
+    })
+  }, [])
   useEffect(_ => {
     if (!question) { return }
     if (!id) { return }
     onChangeById({ value: value, answer_id: id, question_id: question.id })
   }, [id])
   useEffect(_ => {
+    if ((question || {}).id === 1 || !(question || {}).id || error) { return }
     inputRef.current.focus()
   }, [(question || {}).title])
   return <div>
@@ -39,7 +49,6 @@ export default ({ loading, maxPrice, question, onChange, onChangeById, keywords,
         {value}
       </span>
       <input
-        autoFocus
         style={{ width: `${width}px` }}
         className={styles.input}
         type='text'
@@ -58,19 +67,21 @@ export default ({ loading, maxPrice, question, onChange, onChangeById, keywords,
         {(question || {}).title}
       </span>
     </div>
-    <div className={classNames(styles.revert, {
-      [styles.disabled]: values.length === 0
-    })} onClick={_ => {
-      if (values.length === 0) { return }
-      const questionToRevert = values[values.length - 1].question
-      if (questionToRevert < 1) { return }
-      const newValues = values.filter(value => Number(value.question) !== Number(questionToRevert))
-      changeValues(newValues)
-      changeId(null)
-      onRevert && onRevert({ question_id: questionToRevert })
-    }}>
+    <Button
+      className={styles.revert}
+      disabled={values.length === 0}
+      onClick={_ => {
+        if (values.length === 0) { return }
+        const questionToRevert = values[values.length - 1].question
+        if (questionToRevert < 1) { return }
+        const newValues = values.filter(value => Number(value.question) !== Number(questionToRevert))
+        changeValues(newValues)
+        changeId(null)
+        onRevert && onRevert({ question_id: questionToRevert })
+      }}
+    >
       Go to previous question
-    </div>
+    </Button>
     {renderOptions({
       focused,
       maxPrice,

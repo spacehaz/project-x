@@ -16,5 +16,8 @@ export default {
     text_8: 'For those who got separated from their sex partners because of self isolations - you can still have sex together! Variety of internet controlled toys will keep your relations stable and satisfying despite the distance.',
     text_9: 'Stay safe, sex safe.',
     text_10: '<3'
-	}
+	},
+  errors: {
+    'NOT_FOUND': 'Ooopss seems that thaere are no goods with such parameters. Try to go one or more questions back and change your answer.'
+  }
 }
