@@ -7,14 +7,7 @@
 .revert {
   position: absolute;
   right: 20px;
-  bottom: 0px;
-  cursor: pointer;
-  font-size: 14px;
-
-  &.disabled {
-    cursor: not-allowed;
-    opacity: .3;
-  }
+  bottom: -40px;
 }
 
 .answers {

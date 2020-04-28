@@ -10,6 +10,7 @@ const generator = function * ({ payload }) {
     const answersFormatted = formatAnswers({ answers })
     const maxPrice = yield select(generator.selectors.maxPrice)
     yield put({ type: 'ITEMS.SET_LOADING', payload: { loading: true } })
+    yield put({ type: 'ITEMS.SET_ERROR', payload: { error: null } })
     const { data, success, keywords } = yield call(getItems, { answers: answersFormatted, maxPrice, keywords: userKeywords })
     if (success) {
       const formattedData = data.map(item => formatItem(item))
@@ -32,9 +33,9 @@ const generator = function * ({ payload }) {
         yield put({ type: '*QUIZ.GET_QUESTION', payload: { resultsLength: formattedData.length, answers, keywords } })
       }
     } else {
-      console.log({ maxPriceApi: 0 })
       yield put({ type: 'ITEMS.SET_MAX_PRICE', payload: { maxPrice: 0 } })
       yield put({ type: 'ITEMS.SET_ITEMS', payload: { items: [] } })
+      yield put({ type: 'ITEMS.SET_ERROR', payload: { error: 'NOT_FOUND' } })
       if (!userKeywords) {
         yield put({ type: '*QUIZ.GET_QUESTION', payload: { resultsLength: 0, answers, keywords } })
       }

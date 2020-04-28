@@ -12,7 +12,8 @@ import Steps from './steps'
   items: {
     items,
     loading,
-    maxPrice
+    maxPrice,
+    error
   },
   quiz: {
     loading: quizLoading,
@@ -25,7 +26,8 @@ import Steps from './steps'
   maxPrice,
   question,
   quizLoading,
-  keywords
+  keywords,
+  error
 }))
 @platform()
 @detectBrowser()
@@ -36,7 +38,7 @@ class Main extends React.Component {
   }
 
   render () {
-    const { items, loading, keywords, maxPrice, quizLoading, question } = this.props
+    const { items, error, loading, keywords, maxPrice, quizLoading, question } = this.props
     return <div className={styles.container}>
       <Header />
       <Steps />
@@ -46,6 +48,7 @@ class Main extends React.Component {
         question={question}
         keywords={keywords}
         maxPrice={maxPrice}
+        error={error}
         onSearch={({ answer_id, question_id, value }) => {
           this.actions().quiz.answer({ answer_id, question_id, value })
         }}
@@ -53,7 +56,7 @@ class Main extends React.Component {
           this.actions().quiz.revertAnswer({ question_id })
         }}
       />
-      <Goods items={items} loading={loading} question={question} />
+      <Goods items={items} loading={loading} question={question} error={error} />
 
       <Description />
     </div>
