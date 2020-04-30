@@ -18,6 +18,6 @@ export default {
     text_10: '<3'
 	},
   errors: {
-    'NOT_FOUND': 'Ooopss seems that thaere are no goods with such parameters. Try to go one or more questions back and change your answer.'
+    'NOT_FOUND': 'Ooopss seems that there are no goods with such parameters. Try to go one or more questions back and change your answer.'
   }
 }

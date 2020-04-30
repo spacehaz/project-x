@@ -19,7 +19,7 @@ const steps = [
   },
   {
     index: 2,
-    title: 'Pick ay item',
+    title: 'Pick any item',
     color: '#ff58e4' 
   }, {
     index: 3,
