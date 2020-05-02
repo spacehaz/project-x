@@ -14,16 +14,16 @@ const Steps = () => <div className={styles.container}>
 const steps = [
   {
     index: 1,
-    title: 'Answer questions',
+    title: 'Answer any amount of questions',
     color: '#94d2ff'
   },
   {
     index: 2,
-    title: 'Pick any item',
+    title: 'The more questions you answer the better choice you get ',
     color: '#ff58e4' 
   }, {
     index: 3,
-    title: 'Buy in your favourite shop',
+    title: 'You can always go back to previous question or reload the page to start over',
     color: '#5dc5c4' 
   }
 ]

@@ -6,8 +6,13 @@ const Footer = () => {
   const year = new Date().getFullYear()
   return <div className={styles.container}>
     <div className={styles.contacts}>
-      <div className={styles.madeBy}>{text('components.footer.madeBy')}</div><br/>
-      <div className={styles.contact} dangerouslySetInnerHTML={{ __html: text('components.footer.contact', { email: '///@gmail.com' }) }}/>
+      <div className={styles.madeBy}>{text('components.footer.testMode')}</div><br/>
+      <div
+        className={styles.contact}
+        dangerouslySetInnerHTML={{
+          __html: text('components.footer.contact')
+        }}
+      />
     </div>
     <div className={styles.copyright}>
       <div>{text('components.footer.copyright')}</div>
