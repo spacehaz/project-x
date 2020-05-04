@@ -12,6 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/images/favicon.png">
     <meta property="og:image" content="./assets/images/preview.png" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165554562-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-165554562-1');
+    </script>
 		
 	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
 		<link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks[chunk].css %>">
