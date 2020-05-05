@@ -1,4 +1,4 @@
-/* global ga */
+/* global ga, ym */
 
 import React, { useState, useEffect } from 'react'
 import styles from './styles.module.scss'
@@ -18,6 +18,7 @@ export default ({ items, loading, question, error }) => {
     disabled={items.length === 0 || cardsCount >= items.length}
     onClick={_ => {
       ga('send', 'event', 'Items', `loadMoreClick`)
+      ym(62556976, 'reachGoal', `loadMoreClick`)
       setCardsCount(cardsCount + 6)
     }}
   >

@@ -11,6 +11,7 @@ const generator = function * ({ payload }) {
       const answersUpdated = answers.concat({ question_id, answer_id })
       yield put({ type: 'QUIZ.SET_ANSWERS', payload: { answers: answersUpdated } })
       ga('send', 'event', 'Filter', `filter_${question_id}_Answer`, null, answer_id);
+      ym(62556976, 'reachGoal', `filter_${question_id}_Answer`)
       yield put({ type: '*ITEMS.GET_ITEMS', payload: { answers: answersUpdated } })
     } else {
       yield put({ type: '*ITEMS.GET_ITEMS', payload: { keywords: value } })
