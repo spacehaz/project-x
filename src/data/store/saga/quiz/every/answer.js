@@ -1,4 +1,4 @@
-/* global ga */
+/* global ga, ym */
 import { put, call, select } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
