@@ -1,3 +1,4 @@
+/* global ga */
 import { put, call, select } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 
@@ -9,6 +10,7 @@ const generator = function * ({ payload }) {
       const answers = yield select(generator.selectors.answers)
       const answersUpdated = answers.concat({ question_id, answer_id })
       yield put({ type: 'QUIZ.SET_ANSWERS', payload: { answers: answersUpdated } })
+      ga('send', 'event', 'Filter', `filter_${question_id}_Answer`, null, answer_id);
       yield put({ type: '*ITEMS.GET_ITEMS', payload: { answers: answersUpdated } })
     } else {
       yield put({ type: '*ITEMS.GET_ITEMS', payload: { keywords: value } })
