@@ -1,9 +1,11 @@
+/* global ga */
+
 import React from 'react'
 import styles from './styles.module.scss'
 import { Ranking, Icons } from 'components/common'
 
 const GoodsCard = ({ ranking, title, price, image, url, bestOffer }) => {
-  return <a className={styles.url} target='_blank' href={url}>
+  return <a className={styles.url} target='_blank' href={url} onClick={_ => ga('send', 'event', 'Items', `listingClickOut`)}>
     <div className={styles.container}>
       {bestOffer && <div className={styles.bestOffer}><Icons.Fire /></div>}
       {image ? <img className={styles.image} src={image}/> : <div className={styles.image}><Icons.Photo /></div>}

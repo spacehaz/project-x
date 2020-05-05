@@ -1,3 +1,5 @@
+/* global ga */
+
 import React, { useState, useEffect } from 'react'
 import styles from './styles.module.scss'
 import { GoodsCard, Preloader, Button } from 'components/common'
@@ -15,6 +17,7 @@ export default ({ items, loading, question, error }) => {
     className={styles.button}
     disabled={items.length === 0 || cardsCount >= items.length}
     onClick={_ => {
+      ga('send', 'event', 'Items', `loadMoreClick`)
       setCardsCount(cardsCount + 6)
     }}
   >
